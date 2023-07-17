@@ -40,7 +40,7 @@ int main() {
 
     mostrarCriadores(c);
 
-    printf("\n\n\npos: %d\n\n\n", buscarCriador(c));
+    //printf("\n\n\npos: %d\n\n\n", buscarCriador(c));
 
     ///printf("%d\n",temFazenda(c->fazendas));
     
