@@ -4,6 +4,9 @@
 
 #include "criador.h"
 #include "fazenda.h"
+#include "fazenda.c"
+#include "animal.h"
+#include "animal.c"
 //#include "fazenda.c"
 
 struct criador
@@ -18,13 +21,6 @@ struct criador
 int id = 0;
 
 Criador *criarListaDuplaCriadores(){
-	/*Criador *c;
-
-	c = (Criador*)malloc(sizeof(Criador));
-
-	c->ant = NULL;
-	c->prox = NULL;*/
-
 	return NULL;
 }
 
@@ -32,10 +28,9 @@ Criador *cadastrarCriador(Criador *criadores){
 	Criador *c;
 
 	c = (Criador*)malloc(sizeof(Criador));
-	//c->fazendas = (Fazenda*)malloc(sizeof(Fazenda));
-	//c->fazendas->prox = NULL;
-	//c->fazendas->id_fazenda = id;
+	c->fazendas = criarListaEncadeadaCircularFazendas();
 	c->id_criador = ++id;
+	c->fazendas = cadastrarFazenda(c->fazendas);
 	c->ant = NULL;
 	strcpy(c->nome, "teste");
 	if(!criadores){
@@ -59,6 +54,7 @@ Criador *cadastrarCriadorII(Criador *criadores){
 	c->id_criador = id;
 	c->ant = NULL;
 	strcpy(c->nome, "teste");
+
 	if(!criadores){
 		c->prox = NULL;
 	} else{

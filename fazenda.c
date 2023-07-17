@@ -2,6 +2,7 @@
 #include <stdlib.h>
  
 #include "animal.h"
+#include "animal.c"
 //#include "criador.h"
 #include "fazenda.h"
 
@@ -39,6 +40,8 @@ Fazenda *cadastrarFazenda(Fazenda *fazendas){
 	printf("Insira o logradouro: "); 
 	scanf("%s", novo->localizacao.logradouro);
 	//novo->rebanho = criaListaEncadeadaSimplesAnimais();
+	//fazendas->rebanho = criaListaEncadeadaSimplesAnimais();
+	//novo->rebanho = cadastrar(novo->rebanho);
 
 	if(fazendas == NULL){
 		novo->prox = novo;

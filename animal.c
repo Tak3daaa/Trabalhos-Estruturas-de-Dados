@@ -21,26 +21,27 @@ Animal *cadastrar(Animal *rebanho) {
 	scanf("%d", &novo->id_fazenda);
 
 	// Verifica se a fazenda já existe
-	Animal *temp;
+	/*Animal *temp;
 	for (temp = rebanho; temp != NULL; temp = temp->prox) {
 		if (novo->id_fazenda == temp->id_fazenda) {
 			printf("A fazenda ja existe.\n");
 			free(novo);
 			return rebanho; // Retorna a lista original sem adicionar o novo animal
 		}
-	}
+	}*/
 
 	printf("Informe o id do animal: ");
 	scanf("%d", &novo->id_animal);
 
 	// Verifica se o id do animal já existe
-	for (temp = rebanho; temp != NULL; temp = temp->prox) {
+	/*for (temp = rebanho; temp != NULL; temp = temp->prox) {
 		if (novo->id_animal == temp->id_animal) {
 			printf("O id do animal ja existe.\n");
 			free(novo);
 			return rebanho; // Retorna a lista original sem adicionar o novo animal
 		}
-	}
+	}*/
+	
 
 	printf("Informe o sexo do animal (M ou F): ");
 	scanf(" %c", &novo->sexo);
