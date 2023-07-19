@@ -15,7 +15,7 @@ Animal *criaListaEncadeadaSimplesAnimais() {
 	return NULL;
 }
 
-Animal *cadastrar(Animal *rebanho) {
+Animal *cadastrarAnimal(Animal *rebanho) {
 	Animal *novo = (Animal*)malloc(sizeof(Animal));
 	printf("\nInforme o id da fazenda: ");
 	scanf("%d", &novo->id_fazenda);
@@ -125,7 +125,40 @@ void mostrarAnimalSexo(Animal *rebanho)
 
 }
 
-Animal mostrarAnimalStatus(Animal *rebanho)
+/*
+Animal *mostrarAnimalStatus(Animal *rebanho)
+{
+	Animal *aux;
+	int sts;
+	printf("Informe o tipo de status do animal que queira listar: ");
+	scanf("%d", &sts);
+	if (sts == 1)
+	{
+		printf("Status: Nascimento na propria fazenda.\n");
+	}
+	if (sts == 2)
+	{
+		printf("Status: Vendido.\n");
+	}
+	if (sts == 3)
+	{
+		printf("Status: Troca.\n");
+	}
+	for(aux = rebanho ; aux != NULL ; aux = aux->prox)
+	{
+		if(aux->status == sts)
+		{
+			printf("---------------------------------------\n");
+			printf("Id da fazenda: %d\n", rebanho->id_fazenda);
+			printf("Id do animal: %d\n", rebanho->id_animal);
+			printf("Sexo: %c", rebanho->sexo);
+			printf("Peso: %.2f", rebanho->peso);
+		}
+	}
+}
+*/
+
+void mostrarAnimalStatus(Animal *rebanho)
 {
 	Animal *aux;
 	int sts;

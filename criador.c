@@ -106,6 +106,7 @@ int buscarCriador(Criador *criadores){
 void mostrarCriadores(Criador *criadores){
 	Criador *aux = criadores;
 	//printf("Id\tNome\tTem Fazenda\tId fazenda\n");
+	printf("Criador\n");
 	printf("Id\tNome\n");
 	while(aux){
 		//printf("%d\t%s\t\t", aux->id_criador, aux->nome);
@@ -115,3 +116,12 @@ void mostrarCriadores(Criador *criadores){
 	}
 }
 
+void mostrarTudo(Criador *criador){
+	Criador *aux = criador;
+
+
+
+
+}
+
+// https://wiki.python.org.br/ExerciciosClasses

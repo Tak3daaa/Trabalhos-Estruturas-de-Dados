@@ -11,7 +11,7 @@ int main() {
     animal = criaListaEncadeadaSimplesAnimais();
 
     animal = cadastrar(animal);
-    animal = cadastrar(animal);
+    //animal = cadastrar(animal);
     animal = cadastrar(animal);
 
     Animal *aux = animal;

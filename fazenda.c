@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
  
-#include "animal.h"
-#include "animal.c"
-//#include "criador.h"
 #include "fazenda.h"
+#include "animal.h"
+// #include "animal.c"
+//#include "criador.h"
 
 struct endereco{
 	char cidade[50], estado[2], logradouro[200];
