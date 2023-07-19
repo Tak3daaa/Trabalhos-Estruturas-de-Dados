@@ -7,7 +7,7 @@
 #include "fazenda.c"
 #include "animal.h"
 #include "animal.c"
-//#include "fazenda.c"
+// #include "fazenda.c"
 
 struct criador
 {
@@ -28,19 +28,13 @@ Criador *cadastrarCriador(Criador *criadores){
 	Criador *c;
 
 	c = (Criador*)malloc(sizeof(Criador));
-	//c->fazendas = criarListaEncadeadaCircularFazendas();
-	//c->id_criador = ++id;
 	printf("Id do criador: ");
 	scanf("%d", &c->id_criador);
 	fflush(stdin);
 	printf("Nome do criador: ");
 	scanf("%s[^\n]", c->nome);
 	fflush(stdin);
-	//c->fazendas = cadastrarFazenda(c->fazendas);
-	//c->fazendas->id_criador = c->id_criador;
-	// printf("Id do criador: %d\n", c->fazendas->id_criador);
 	c->ant = NULL;
-	//strcpy(c->nome, "teste");
 	if(!criadores){
 		c->prox = NULL;
 	} else{
@@ -50,36 +44,6 @@ Criador *cadastrarCriador(Criador *criadores){
 
 	return c;
 }
-
-/*
-Criador *cadastrarCriadorII(Criador *criadores){
-	Criador *c;
-
-	c = (Criador*)malloc(sizeof(Criador));
-	//c->fazendas = (Fazenda*)malloc(sizeof(Fazenda));
-	//c->fazendas = NULL;
-	++id;
-	//c->fazendas->id_fazenda = id;
-	c->id_criador = id;
-	c->ant = NULL;
-	strcpy(c->nome, "teste");
-
-	if(!criadores){
-		c->prox = NULL;
-	} else{
-		c->prox = criadores;
-		criadores->ant = c;
-	}
-
-	return c;
-}
-*/
-
-// int temFazenda(Fazenda *fazenda){
-// 	if(fazenda != NULL) return 1;
-
-// 	return 0;
-// }
 
 int size(Criador *c){
 	Criador *aux;
@@ -113,10 +77,18 @@ Criador *buscarCriador(Criador *criadores){
 	return NULL;
 }
 
+int tem(Criador *criador){
+	if(criador->fazendas){
+		return 1;
+	}
+
+	return 0;
+}
+
 void mostrarCriadores(Criador *criadores){
 	Criador *aux = criadores;
 	//printf("Id\tNome\tTem Fazenda\tId fazenda\n");
-	printf("Criador\n");
+	printf("\nCriador\n");
 	//printf("Id\tNome\n");
 	while(aux){
 		printf("%d\t%s\t", aux->id_criador, aux->nome);
@@ -124,18 +96,13 @@ void mostrarCriadores(Criador *criadores){
 		//printf("%d\t\t%d\n", temFazenda(aux->fazendas), aux->fazendas->id_fazenda);
 		aux = aux->prox;
 	}
+	printf("\n");
 }
 
 void mostrarTudo(Criador *criador){
 	Criador *aux = criador;
-	printf("\n.......\n");
-	Animal *retorno = buscarAnimal(aux->fazendas->rebanho);
-	printf("Id animal: %d\n", retorno->id_animal);
-	printf("\n.......\nAnimal por sexo\n");
-	mostrarAnimalSexo(aux->fazendas->rebanho);
-	printf("\n.......\n");
-
-
+	mostrarCriadores(aux);
+	mostrarAnimalStatus(aux->fazendas->rebanho);
 }
 
 // https://wiki.python.org.br/ExerciciosClasses

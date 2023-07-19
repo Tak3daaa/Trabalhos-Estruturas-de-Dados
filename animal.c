@@ -14,13 +14,14 @@ struct animal {
 };
 
 Animal *criaListaEncadeadaSimplesAnimais() {
+	printf("Animal Criar.");
 	return NULL;
 }
 
 Animal *cadastrarAnimal(Animal *rebanho) {
 	Animal *novo = (Animal*)malloc(sizeof(Animal));
-	//printf("\nInforme o id da fazenda: ");
-	//scanf("%d", &novo->id_fazenda);
+	printf("\nInforme o id da fazenda: ");
+	scanf("%d", &novo->id_fazenda);
 
 	// Verifica se a fazenda já existe
 	/*Animal *temp;
@@ -47,10 +48,10 @@ Animal *cadastrarAnimal(Animal *rebanho) {
 
 	printf("Informe o sexo do animal (M ou F): ");
 	scanf(" %c", &novo->sexo);
-	if (novo->sexo != 'M' && novo->sexo != 'F') {
+	while(novo->sexo != 'M' && novo->sexo != 'F') {
 		printf("Sexo invalido. Utilize 'M' ou 'F'.\n");
-		free(novo);
-		return rebanho; // Retorna a lista original sem adicionar o novo animal
+		scanf(" %c", &novo->sexo);
+		
 	}
 
 	printf("Informe o peso do animal: ");
@@ -61,16 +62,23 @@ Animal *cadastrarAnimal(Animal *rebanho) {
 	printf("2 - Venda.\n");
 	printf("3 - Troca\n");
 	scanf("%d", &novo->status);
-	if (novo->status != 1 && novo->status != 2 && novo->status != 3) {
+	while (novo->status != 1 && novo->status != 2 && novo->status != 3) {
 		printf("Status invalido. Utilize 1, 2 ou 3.\n");
-		free(novo);
-		return rebanho; // Retorna a lista original sem adicionar o novo animal
+		printf("Informe o status do animal:\n");
+		printf("1 - Nascimento na propria fazenda.\n");
+		printf("2 - Venda.\n");
+		printf("3 - Troca\n");
+		scanf("%d", &novo->status); 
 	}
-	
-	novo->prox = rebanho;
-	rebanho = novo;
 
-	return rebanho;
+	if(!rebanho){
+		novo->prox = NULL;
+	} else{
+		novo->prox = rebanho;
+	}
+	//rebanho = novo;
+
+	return novo;
 }
 
 Animal *buscarAnimal(Animal *rebanho)
@@ -86,8 +94,8 @@ Animal *buscarAnimal(Animal *rebanho)
 			printf("---------------------------------------\n");
 			printf("Id da fazenda: %d\n", rebanho->id_fazenda);
 			printf("Id do animal: %d\n", rebanho->id_animal);
-			printf("Sexo: %c\n", rebanho->sexo);
-			printf("Peso: %.2f\n", rebanho->peso);
+			printf("Sexo: %c", rebanho->sexo);
+			printf("Peso: %.2f", rebanho->peso);
 			if (rebanho->status == 1)
 			{
 				printf("Status: Nascimento na propria fazenda.\n");
@@ -101,7 +109,6 @@ Animal *buscarAnimal(Animal *rebanho)
 				printf("Status: Troca.\n");
 			}
 			return aux;
-
 		}
 	}
 
@@ -128,39 +135,6 @@ void mostrarAnimalSexo(Animal *rebanho)
 
 }
 
-/*
-Animal *mostrarAnimalStatus(Animal *rebanho)
-{
-	Animal *aux;
-	int sts;
-	printf("Informe o tipo de status do animal que queira listar: ");
-	scanf("%d", &sts);
-	if (sts == 1)
-	{
-		printf("Status: Nascimento na propria fazenda.\n");
-	}
-	if (sts == 2)
-	{
-		printf("Status: Vendido.\n");
-	}
-	if (sts == 3)
-	{
-		printf("Status: Troca.\n");
-	}
-	for(aux = rebanho ; aux != NULL ; aux = aux->prox)
-	{
-		if(aux->status == sts)
-		{
-			printf("---------------------------------------\n");
-			printf("Id da fazenda: %d\n", rebanho->id_fazenda);
-			printf("Id do animal: %d\n", rebanho->id_animal);
-			printf("Sexo: %c", rebanho->sexo);
-			printf("Peso: %.2f", rebanho->peso);
-		}
-	}
-}
-*/
-
 void mostrarAnimalStatus(Animal *rebanho)
 {
 	Animal *aux;
@@ -169,15 +143,15 @@ void mostrarAnimalStatus(Animal *rebanho)
 	scanf("%d", &sts);
 	if (sts == 1)
 	{
-		printf("Status: Nascimento na propria fazenda.\n");
+		printf("\nStatus: Nascimento na propria fazenda.\n");
 	}
 	if (sts == 2)
 	{
-		printf("Status: Vendido.\n");
+		printf("\nStatus: Vendido.\n");
 	}
 	if (sts == 3)
 	{
-		printf("Status: Troca.\n");
+		printf("\nStatus: Troca.\n");
 	}
 	for(aux = rebanho ; aux != NULL ; aux = aux->prox)
 	{
@@ -186,8 +160,123 @@ void mostrarAnimalStatus(Animal *rebanho)
 			printf("---------------------------------------\n");
 			printf("Id da fazenda: %d\n", rebanho->id_fazenda);
 			printf("Id do animal: %d\n", rebanho->id_animal);
-			printf("Sexo: %c", rebanho->sexo);
-			printf("Peso: %.2f", rebanho->peso);
+			printf("Sexo: %c\n", rebanho->sexo);
+			printf("Peso: %.2f\n", rebanho->peso);
 		}
 	}
 }
+
+
+Animal *removerAnimal(Fazenda *fazenda, int id_animal)
+{
+	Animal *remover_animal = fazenda->rebanho;
+	Animal *anterior = NULL;
+	while (remover_animal != NULL && remover_animal->id_animal != id_animal)
+	{
+		anterior = remover_animal;
+		remover_animal = remover_animal->prox;
+	}
+	if (remover_animal == NULL)
+	{
+		return fazenda->rebanho;
+	}
+	if (anterior == NULL)
+	{
+		fazenda->rebanho = remover_animal->prox;
+	}else
+	{
+		anterior->prox = remover_animal->prox;
+	}
+	free(remover_animal);
+
+	return fazenda->rebanho;	
+}
+
+Animal* permutasAnimais(Fazenda* origem, Fazenda* destino, int id_animal) {
+    Animal* rebanho_origem = origem->rebanho;
+    Animal* rebanho_destino = destino->rebanho;
+
+    printf("Endereço de Origem:\n%s;\n%s;\n%s;\n", origem->localizacao.cidade, origem->localizacao.estado, origem->localizacao.logradouro);
+    printf("Endereço de Destino:\n%s;\n%s;\n%s;\n", destino->localizacao.cidade, destino->localizacao.estado, destino->localizacao.logradouro);
+
+    Animal* animal_origem = NULL;
+
+    // Find the animal in the origin farm
+    Animal* aux;
+    for (aux = rebanho_origem; aux != NULL; aux = aux->prox) {
+        if (aux->id_animal == id_animal) {
+            animal_origem = aux;
+            break;
+        }
+    }
+
+    if (animal_origem == NULL) {
+        printf("Animal não encontrado na fazenda de origem.\n");
+        return rebanho_origem;
+    }
+
+    printf("---------------------------------------\n");
+    printf("Id da fazenda: %d\n", animal_origem->id_fazenda);
+    printf("Id do animal: %d\n", animal_origem->id_animal);
+    printf("Sexo: %c\n", animal_origem->sexo);
+    printf("Peso: %.2f\n", animal_origem->peso);
+    printf("Status: %d\n\n", animal_origem->status);
+
+    int op;
+
+    printf("Informe o status:\n");
+    printf("2 - Venda.\n");
+    printf("3 - Troca.\n");
+    scanf("%d", &op);
+
+    while (op != 2 && op != 3) {
+        printf("Opção inválida. Informe outra opção.\n");
+        printf("Informe o status:\n");
+        printf("2 - Venda.\n");
+        printf("3 - Troca.\n");
+        scanf("%d", &op);
+    }
+
+    if (op == 2) {
+        printf("Opção de venda selecionada.\n");
+        animal_origem->status = 2;
+        destino->rebanho = animal_origem;
+        rebanho_origem = removerAnimal(origem, id_animal);
+        if (rebanho_origem == NULL) {
+            printf("A venda não foi bem sucedida.\n");
+        } else {
+            printf("Animal vendido com sucesso.\n");
+        }
+    } else if (op == 3) {
+        Animal* animal_destino = rebanho_destino;
+
+        if (animal_destino == NULL) {
+            printf("Animal não encontrado na fazenda de destino.\n");
+            return rebanho_origem;
+        }
+
+        printf("Opção de troca selecionada.\n");
+        animal_origem->status = 3;
+        animal_destino->status = 3;
+
+        // Swap animals between origin and destination farms
+        if (animal_origem == rebanho_origem) {
+            rebanho_origem = animal_destino;
+        } else {
+            for (aux = rebanho_origem; aux != NULL; aux = aux->prox) {
+                if (aux->prox == animal_origem) {
+                    aux->prox = animal_destino;
+                    break;
+                }
+            }
+        }
+
+        animal_destino->prox = animal_origem->prox;
+        animal_origem->prox = rebanho_destino;
+
+        printf("Troca realizada com sucesso.\n");
+    }
+
+    return rebanho_origem;
+}
+

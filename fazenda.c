@@ -127,7 +127,7 @@ Fazenda *removerFazenda(Fazenda *fazendas, int id){
 Fazenda *buscarFazenda(Fazenda *fazendas){
 	Fazenda *aux = fazendas;
 	int id;
-	printf("Informe o id da fazenda que voce procura buscar\n");
+	printf("Informe o id da fazenda que voce procura: \n");
 	scanf("%d", &id);
 
 	if(fazendas == NULL){
@@ -170,6 +170,7 @@ Fazenda *getBuscar(Fazenda *fazendas, int id){
 
 // }
 
+/*
 int temFazenda(Fazenda *fazenda){
 	//Fazenda *aux = fazenda;
 	printf(".......\n");
@@ -182,3 +183,4 @@ int temFazenda(Fazenda *fazenda){
 
 	return 1;
 }
+*/
