@@ -18,7 +18,7 @@ struct criador
 	struct criador *prox, *ant; // lista dupla encadeada, nao é necessário ser circular
 };
 
-int id = 0;
+// int id = 0;
 
 Criador *criarListaDuplaCriadores(){
 	return NULL;
@@ -28,14 +28,16 @@ Criador *cadastrarCriador(Criador *criadores){
 	Criador *c;
 
 	c = (Criador*)malloc(sizeof(Criador));
-	c->fazendas = criarListaEncadeadaCircularFazendas();
-	c->id_criador = ++id;
+	//c->fazendas = criarListaEncadeadaCircularFazendas();
+	//c->id_criador = ++id;
+	printf("Id do criador: ");
+	scanf("%d", &c->id_criador);
 	fflush(stdin);
 	printf("Nome do criador: ");
 	scanf("%s[^\n]", c->nome);
 	fflush(stdin);
-	c->fazendas = cadastrarFazenda(c->fazendas);
-	c->fazendas->id_criador = c->id_criador;
+	//c->fazendas = cadastrarFazenda(c->fazendas);
+	//c->fazendas->id_criador = c->id_criador;
 	// printf("Id do criador: %d\n", c->fazendas->id_criador);
 	c->ant = NULL;
 	//strcpy(c->nome, "teste");
@@ -49,6 +51,7 @@ Criador *cadastrarCriador(Criador *criadores){
 	return c;
 }
 
+/*
 Criador *cadastrarCriadorII(Criador *criadores){
 	Criador *c;
 
@@ -70,15 +73,13 @@ Criador *cadastrarCriadorII(Criador *criadores){
 
 	return c;
 }
+*/
 
+// int temFazenda(Fazenda *fazenda){
+// 	if(fazenda != NULL) return 1;
 
-int temFazenda(Fazenda *fazenda){
-	if(fazenda){
-		return 1;
-	}
-
-	return 0;
-}
+// 	return 0;
+// }
 
 int size(Criador *c){
 	Criador *aux;
@@ -93,30 +94,33 @@ int size(Criador *c){
 	return count;
 }
 
-int buscarCriador(Criador *criadores){
+Criador *buscarCriador(Criador *criadores){
 	Criador *aux = criadores;
-	int id = 3, rep = 0;
+	int id;
+	printf("Informe o id do criador: ");
+	scanf("%d", &id);
 
 	while(aux){
 		if(id == aux->id_criador){
-			return rep;
+			printf("Criador encontrado.\n");
+			return aux;
 		}
 
 		aux = aux->prox;
-		rep++;
 	}
 
-	return -1;
+	printf("Criador nao encontrado.\n");
+	return NULL;
 }
 
 void mostrarCriadores(Criador *criadores){
 	Criador *aux = criadores;
 	//printf("Id\tNome\tTem Fazenda\tId fazenda\n");
 	printf("Criador\n");
-	printf("Id\tNome\n");
+	//printf("Id\tNome\n");
 	while(aux){
-		//printf("%d\t%s\t\t", aux->id_criador, aux->nome);
-		printf("%d\t%s\n", aux->id_criador, aux->nome);
+		printf("%d\t%s\t", aux->id_criador, aux->nome);
+		//printf("%d\t%s\n", aux->id_criador, aux->nome);
 		//printf("%d\t\t%d\n", temFazenda(aux->fazendas), aux->fazendas->id_fazenda);
 		aux = aux->prox;
 	}
@@ -125,7 +129,8 @@ void mostrarCriadores(Criador *criadores){
 void mostrarTudo(Criador *criador){
 	Criador *aux = criador;
 	printf("\n.......\n");
-	mostrarAnimalStatus(aux->fazendas->rebanho);
+	Animal *retorno = buscarAnimal(aux->fazendas->rebanho);
+	printf("Id animal: %d\n", retorno->id_animal);
 	printf("\n.......\nAnimal por sexo\n");
 	mostrarAnimalSexo(aux->fazendas->rebanho);
 	printf("\n.......\n");

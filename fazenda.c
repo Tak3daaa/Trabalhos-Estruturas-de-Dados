@@ -22,6 +22,7 @@ struct fazenda{
 };
 
 Fazenda *criarListaEncadeadaCircularFazendas(){
+	printf("dentro\n");
 	return NULL;
 }
 
@@ -41,9 +42,9 @@ Fazenda *cadastrarFazenda(Fazenda *fazendas){
 	scanf("%s", novo->localizacao.estado);
 	printf("Insira o logradouro: "); 
 	scanf("%s", novo->localizacao.logradouro);
-	novo->rebanho = criaListaEncadeadaSimplesAnimais();
+	//novo->rebanho = criaListaEncadeadaSimplesAnimais();
 	//fazendas->rebanho = criaListaEncadeadaSimplesAnimais();
-	novo->rebanho = cadastrarAnimal(novo->rebanho);
+	//novo->rebanho = cadastrarAnimal(novo->rebanho);
 	//novo->rebanho->id_fazenda = novo->id_fazenda;
 	//printf("Teste rebanho id fazenda: %d\n", novo->rebanho->id_fazenda);
 	//printf("Teste id fazenda: %d\n", novo->id_fazenda);
@@ -145,9 +146,6 @@ Fazenda *buscarFazenda(Fazenda *fazendas){
 Fazenda *getBuscar(Fazenda *fazendas, int id){
 
 	Fazenda *aux = fazendas;
-	//int id;
-	//printf("Id: ");
-	//scanf("%d", &id);
 
 	if(fazendas == NULL){
 		printf("\nSem fazendas registradas!\n");
@@ -168,3 +166,16 @@ Fazenda *getBuscar(Fazenda *fazendas, int id){
 // int quantAnimaisSexo(Fazenda *fazenda, char sexo){
 
 // }
+
+int temFazenda(Fazenda *fazenda){
+	//Fazenda *aux = fazenda;
+	printf(".......\n");
+	if(!fazenda){
+		printf("\nSem fazendas registradas!\n");
+		return 0;
+	}
+
+	printf(".......\n");
+
+	return 1;
+}

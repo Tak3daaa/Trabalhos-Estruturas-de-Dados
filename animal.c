@@ -3,6 +3,7 @@
 
 #include "animal.h"
 #include "criador.h"
+#include "fazenda.h"
 
 struct animal {
 	int id_animal, id_fazenda;
@@ -65,7 +66,7 @@ Animal *cadastrarAnimal(Animal *rebanho) {
 		free(novo);
 		return rebanho; // Retorna a lista original sem adicionar o novo animal
 	}
-
+	
 	novo->prox = rebanho;
 	rebanho = novo;
 
@@ -85,8 +86,8 @@ Animal *buscarAnimal(Animal *rebanho)
 			printf("---------------------------------------\n");
 			printf("Id da fazenda: %d\n", rebanho->id_fazenda);
 			printf("Id do animal: %d\n", rebanho->id_animal);
-			printf("Sexo: %c", rebanho->sexo);
-			printf("Peso: %.2f", rebanho->peso);
+			printf("Sexo: %c\n", rebanho->sexo);
+			printf("Peso: %.2f\n", rebanho->peso);
 			if (rebanho->status == 1)
 			{
 				printf("Status: Nascimento na propria fazenda.\n");
@@ -99,6 +100,7 @@ Animal *buscarAnimal(Animal *rebanho)
 			{
 				printf("Status: Troca.\n");
 			}
+			return aux;
 
 		}
 	}
