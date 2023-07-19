@@ -17,7 +17,7 @@ int main() {
 
     mostrarCriadores(c);
     mostrarTudo(c);
-    ///printf("%d\n",temFazenda(c->fazendas));
+    // printf("%d\n",temFazenda(c->fazendas));
     
 
     return 0;

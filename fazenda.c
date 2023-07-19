@@ -29,8 +29,9 @@ Fazenda *cadastrarFazenda(Fazenda *fazendas){
 	Fazenda *aux = fazendas;
 
 	novo->id_fazenda = rand() % 100000;
-	printf("\nInsira novamente seu ID de criador: "); 
-	scanf("%d", &novo->id_criador);
+	//printf("Id do criador: %d\n", fazendas->id_criador);
+	//printf("\nInsira novamente seu ID de criador: "); 
+	//scanf("%d", &novo->id_criador);
 	printf("Insira o nome da fazenda: "); 
 	scanf("%s", novo->nome);
 	printf("Insira a cidade: "); 
@@ -42,6 +43,9 @@ Fazenda *cadastrarFazenda(Fazenda *fazendas){
 	novo->rebanho = criaListaEncadeadaSimplesAnimais();
 	//fazendas->rebanho = criaListaEncadeadaSimplesAnimais();
 	novo->rebanho = cadastrarAnimal(novo->rebanho);
+	// novo->rebanho->id_fazenda = novo->id_fazenda;
+	// printf("Teste rebanho id fazenda: %d\n", novo->rebanho->id_fazenda);
+	// printf("Teste id fazenda: %d\n", novo->id_fazenda);
 
 	if(fazendas == NULL){
 		novo->prox = novo;

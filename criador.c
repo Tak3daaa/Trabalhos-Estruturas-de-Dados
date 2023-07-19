@@ -30,9 +30,15 @@ Criador *cadastrarCriador(Criador *criadores){
 	c = (Criador*)malloc(sizeof(Criador));
 	c->fazendas = criarListaEncadeadaCircularFazendas();
 	c->id_criador = ++id;
+	fflush(stdin);
+	printf("Nome do criador: ");
+	scanf("%s[^\n]", c->nome);
+	fflush(stdin);
 	c->fazendas = cadastrarFazenda(c->fazendas);
+	c->fazendas->id_criador = c->id_criador;
+	printf("Id do criador: %d\n", c->fazendas->id_criador);
 	c->ant = NULL;
-	strcpy(c->nome, "teste");
+	//strcpy(c->nome, "teste");
 	if(!criadores){
 		c->prox = NULL;
 	} else{
