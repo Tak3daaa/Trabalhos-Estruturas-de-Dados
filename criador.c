@@ -36,7 +36,7 @@ Criador *cadastrarCriador(Criador *criadores){
 	fflush(stdin);
 	c->fazendas = cadastrarFazenda(c->fazendas);
 	c->fazendas->id_criador = c->id_criador;
-	printf("Id do criador: %d\n", c->fazendas->id_criador);
+	// printf("Id do criador: %d\n", c->fazendas->id_criador);
 	c->ant = NULL;
 	//strcpy(c->nome, "teste");
 	if(!criadores){
@@ -124,9 +124,11 @@ void mostrarCriadores(Criador *criadores){
 
 void mostrarTudo(Criador *criador){
 	Criador *aux = criador;
-	printf(".......\n");
+	printf("\n.......\n");
 	mostrarAnimalStatus(aux->fazendas->rebanho);
-	printf(".......\n");
+	printf("\n.......\nAnimal por sexo\n");
+	mostrarAnimalSexo(aux->fazendas->rebanho);
+	printf("\n.......\n");
 
 
 }

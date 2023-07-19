@@ -3,6 +3,7 @@
  
 #include "fazenda.h"
 #include "animal.h"
+#include "criador.h"
 // #include "animal.c"
 //#include "criador.h"
 
@@ -43,9 +44,9 @@ Fazenda *cadastrarFazenda(Fazenda *fazendas){
 	novo->rebanho = criaListaEncadeadaSimplesAnimais();
 	//fazendas->rebanho = criaListaEncadeadaSimplesAnimais();
 	novo->rebanho = cadastrarAnimal(novo->rebanho);
-	// novo->rebanho->id_fazenda = novo->id_fazenda;
-	// printf("Teste rebanho id fazenda: %d\n", novo->rebanho->id_fazenda);
-	// printf("Teste id fazenda: %d\n", novo->id_fazenda);
+	//novo->rebanho->id_fazenda = novo->id_fazenda;
+	//printf("Teste rebanho id fazenda: %d\n", novo->rebanho->id_fazenda);
+	//printf("Teste id fazenda: %d\n", novo->id_fazenda);
 
 	if(fazendas == NULL){
 		novo->prox = novo;

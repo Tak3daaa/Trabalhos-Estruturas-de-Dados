@@ -3,6 +3,7 @@
 
 #include "criador.h"
 #include "criador.c"
+#include "fazenda.h"
 
 int main() {
 
@@ -17,7 +18,13 @@ int main() {
 
     mostrarCriadores(c);
     mostrarTudo(c);
-    // printf("%d\n",temFazenda(c->fazendas));
+    printf("%d\n",temFazenda(c->fazendas));
+    Criador *teste;
+
+    teste = criarListaDuplaCriadores();
+
+    teste->fazendas = criarListaEncadeadaCircularFazendas();
+    printf("%d\n",temFazenda(teste->fazendas));
     
 
     return 0;

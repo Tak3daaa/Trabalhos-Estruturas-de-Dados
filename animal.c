@@ -2,6 +2,7 @@
 #include <stdlib.h> 
 
 #include "animal.h"
+#include "criador.h"
 
 struct animal {
 	int id_animal, id_fazenda;
