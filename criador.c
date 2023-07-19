@@ -87,10 +87,10 @@ int temFazenda(Fazenda *fazenda){
 void mostrarCriadores(Criador *criadores){
 	Criador *aux = criadores;
 
-	printf("\nCriador\n");
+	printf("\n--------Criador--------\n");
 	
 	while(aux){
-		printf("%5d\t%5s\t", aux->id_criador, aux->nome);
+		printf("%5d\t%5s\n", aux->id_criador, aux->nome);
 		aux = aux->prox;
 	}
 	printf("\n");
@@ -109,32 +109,23 @@ Criador *removerCriador(Criador *criadores){
 
 	if(temFazenda(aux->fazendas) != 0){
 		printf("Nao eh possivel excluir esse criador.\n");
-		//return NULL;
 	} else{
-		//printf("\nelse\n");
-		/*if(aux){
-			return criadores;
-		}
-	
-		if(criadores == aux){
-			criadores = aux->prox;
-		} else{
-			aux->ant->prox = aux->prox;
-		}
-
-		if(!aux->prox){
-			aux->prox->ant = aux->ant;
-		}*/
-
-		if(!aux->prox){
+		if(!aux->ant && !aux->prox){
+			free(aux);
+		} else if(!aux->prox){
 			aux2 = aux->ant;
-			
+			aux2->prox = NULL;
+		} else{
+			aux2 = aux->ant;
+			aux2->prox = aux->prox;
+			aux->ant = aux2;
 		}
 
 		free(aux);
+		printf("Criador Removido.\n");
 
-		return criadores;
 	}
-	
 
+	return criadores;
+	
 }

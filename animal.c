@@ -20,31 +20,9 @@ Animal *criaListaEncadeadaSimplesAnimais() {
 
 Animal *cadastrarAnimal(Animal *rebanho) {
 	Animal *novo = (Animal*)malloc(sizeof(Animal));
-	//printf("\nInforme o id da fazenda: ");
-	//scanf("%d", &novo->id_fazenda);
-
-	// Verifica se a fazenda já existe
-	/*Animal *temp;
-	for (temp = rebanho; temp != NULL; temp = temp->prox) {
-		if (novo->id_fazenda == temp->id_fazenda) {
-			printf("A fazenda ja existe.\n");
-			free(novo);
-			return rebanho; // Retorna a lista original sem adicionar o novo animal
-		}
-	}*/
 
 	printf("Informe o id do animal: ");
 	scanf("%d", &novo->id_animal);
-
-	// Verifica se o id do animal já existe
-	/*for (temp = rebanho; temp != NULL; temp = temp->prox) {
-		if (novo->id_animal == temp->id_animal) {
-			printf("O id do animal ja existe.\n");
-			free(novo);
-			return rebanho; // Retorna a lista original sem adicionar o novo animal
-		}
-	}*/
-	
 
 	printf("Informe o sexo do animal (M ou F): ");
 	scanf(" %c", &novo->sexo);
@@ -76,7 +54,6 @@ Animal *cadastrarAnimal(Animal *rebanho) {
 	} else{
 		novo->prox = rebanho;
 	}
-	//rebanho = novo;
 
 	return novo;
 }
@@ -192,7 +169,7 @@ Animal *removerAnimal(Fazenda *fazenda, int id_animal)
 	return fazenda->rebanho;	
 }
 
-Animal* permutasAnimais(Fazenda* origem, Fazenda* destino, int id_animal) {
+Animal *permutasAnimais(Fazenda* origem, Fazenda* destino, int id_animal) {
     Animal* rebanho_origem = origem->rebanho;
     Animal* rebanho_destino = destino->rebanho;
 
