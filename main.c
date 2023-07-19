@@ -34,40 +34,20 @@ int main() {
                 cad_fazenda->fazendas = cadastrarFazenda(cad_fazenda->fazendas);
                 break;
             case 3:
-                cad_animal = buscarFazenda(c->fazendas);
-                
+                cad_animal->fazendas = buscarFazenda(c->fazendas);
+                cad_animal->fazendas->rebanho = criaListaEncadeadaSimplesAnimais();
+                cad_animal->fazendas->rebanho = cadastrarAnimal(cad_animal->fazendas->rebanho);
+                break;
+            case 4:
+                mostrarCriadores(c);
                 break;
             default:
                 break;
         }
     }
 
-    // c = criarListaDuplaCriadores();
-
-    // c = cadastrarCriador(c);
-    // c->fazendas = criarListaEncadeadaCircularFazendas();
-    // c->fazendas = cadastrarFazenda(c->fazendas);
-
-    // c->fazendas->rebanho = criaListaEncadeadaSimplesAnimais();
-    // c->fazendas->rebanho = cadastrarAnimal(c->fazendas->rebanho);
-    //c = cadastrarCriador(c);
-    // c = cadastrarCriador(c);
-    // c = cadastrarCriador(c);
-
-    mostrarCriadores(c);
-    mostrarTudo(c);
-    //printf("%d\n",temFazenda(c->fazendas));
-    // Criador *teste;
-
-    // printf(".......\n");
-    // teste = criarListaDuplaCriadores();
-
-    // printf(".......\n");
-    // teste->fazendas = criarListaEncadeadaCircularFazendas();
-    // printf(".......\n");
-    // // teste->fazendas = NULL;
-    // printf("%d\n",temFazenda(teste->fazendas));
+    //mostrarCriadores(c);
+    //mostrarTudo(c);
     
-
     return 0;
 }

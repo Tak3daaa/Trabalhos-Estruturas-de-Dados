@@ -30,7 +30,10 @@ Fazenda *cadastrarFazenda(Fazenda *fazendas){
 	Fazenda *novo = (Fazenda *) malloc(sizeof(Fazenda));
 	Fazenda *aux = fazendas;
 
-	novo->id_fazenda = rand() % 100000;
+
+	//novo->id_fazenda = rand() % 100000;
+	printf("Informe o id da fazenda: ");
+	scanf("%d", &novo->id_fazenda);
 	//printf("Id do criador: %d\n", fazendas->id_criador);
 	//printf("\nInsira novamente seu ID de criador: "); 
 	//scanf("%d", &novo->id_criador);
@@ -124,7 +127,7 @@ Fazenda *removerFazenda(Fazenda *fazendas, int id){
 Fazenda *buscarFazenda(Fazenda *fazendas){
 	Fazenda *aux = fazendas;
 	int id;
-	printf("Informe o id a buscar\n");
+	printf("Informe o id da fazenda que voce procura buscar\n");
 	scanf("%d", &id);
 
 	if(fazendas == NULL){
