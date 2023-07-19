@@ -18,8 +18,6 @@ struct criador
 	struct criador *prox, *ant; // lista dupla encadeada, nao é necessário ser circular
 };
 
-// int id = 0;
-
 Criador *criarListaDuplaCriadores(){
 	return NULL;
 }
@@ -35,6 +33,7 @@ Criador *cadastrarCriador(Criador *criadores){
 	scanf("%s[^\n]", c->nome);
 	fflush(stdin);
 	c->ant = NULL;
+	c->prox = criadores;
 	if(!criadores){
 		c->prox = NULL;
 	} else{
@@ -77,8 +76,8 @@ Criador *buscarCriador(Criador *criadores){
 	return NULL;
 }
 
-int tem(Criador *criador){
-	if(criador->fazendas){
+int temFazenda(Fazenda *fazenda){
+	if(fazenda){
 		return 1;
 	}
 
@@ -87,13 +86,11 @@ int tem(Criador *criador){
 
 void mostrarCriadores(Criador *criadores){
 	Criador *aux = criadores;
-	//printf("Id\tNome\tTem Fazenda\tId fazenda\n");
+
 	printf("\nCriador\n");
-	//printf("Id\tNome\n");
+	
 	while(aux){
-		printf("%d\t%s\t", aux->id_criador, aux->nome);
-		//printf("%d\t%s\n", aux->id_criador, aux->nome);
-		//printf("%d\t\t%d\n", temFazenda(aux->fazendas), aux->fazendas->id_fazenda);
+		printf("%5d\t%5s\t", aux->id_criador, aux->nome);
 		aux = aux->prox;
 	}
 	printf("\n");
@@ -106,3 +103,38 @@ void mostrarTudo(Criador *criador){
 }
 
 // https://wiki.python.org.br/ExerciciosClasses
+Criador *removerCriador(Criador *criadores){
+	Criador *aux = buscarCriador(criadores);
+	Criador *aux2;
+
+	if(temFazenda(aux->fazendas) != 0){
+		printf("Nao eh possivel excluir esse criador.\n");
+		//return NULL;
+	} else{
+		//printf("\nelse\n");
+		/*if(aux){
+			return criadores;
+		}
+	
+		if(criadores == aux){
+			criadores = aux->prox;
+		} else{
+			aux->ant->prox = aux->prox;
+		}
+
+		if(!aux->prox){
+			aux->prox->ant = aux->ant;
+		}*/
+
+		if(!aux->prox){
+			aux2 = aux->ant;
+			
+		}
+
+		free(aux);
+
+		return criadores;
+	}
+	
+
+}

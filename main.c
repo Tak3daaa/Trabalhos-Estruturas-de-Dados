@@ -33,8 +33,9 @@ int main() {
             case 2:
                 cad_fazenda = buscarCriador(c);
                 cad_fazenda->fazendas = criarListaEncadeadaCircularFazendas();
+                //printf("Tem fazenda %d\n", temFazenda(cad_fazenda->fazendas));
                 cad_fazenda->fazendas = cadastrarFazenda(cad_fazenda->fazendas);
-                //printf("Tem fazenda %d\n", tem(cad_fazenda));
+                //printf("Tem fazenda %d\n", temFazenda(cad_fazenda->fazendas));
                 break;
             case 3:
                 //cad_animal->fazendas = buscarFazenda(cad_fazenda->fazendas);
@@ -44,8 +45,10 @@ int main() {
                 break;
             case 4:
                 mostrarCriadores(c);
+                c = removerCriador(c);
+                mostrarCriadores(c);
                 // buscarAnimal(cad_fazenda->fazendas->rebanho);
-                mostrarTudo(c);
+                //mostrarTudo(c);
                 break;
             default:
                 break;
@@ -54,6 +57,6 @@ int main() {
 
     //mostrarCriadores(c);
     //mostrarTudo(c);
-    
+
     return 0;
 }

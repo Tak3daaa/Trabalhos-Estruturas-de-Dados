@@ -20,8 +20,8 @@ Animal *criaListaEncadeadaSimplesAnimais() {
 
 Animal *cadastrarAnimal(Animal *rebanho) {
 	Animal *novo = (Animal*)malloc(sizeof(Animal));
-	printf("\nInforme o id da fazenda: ");
-	scanf("%d", &novo->id_fazenda);
+	//printf("\nInforme o id da fazenda: ");
+	//scanf("%d", &novo->id_fazenda);
 
 	// Verifica se a fazenda já existe
 	/*Animal *temp;

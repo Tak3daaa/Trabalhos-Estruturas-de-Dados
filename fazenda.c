@@ -169,18 +169,3 @@ Fazenda *getBuscar(Fazenda *fazendas, int id){
 // int quantAnimaisSexo(Fazenda *fazenda, char sexo){
 
 // }
-
-/*
-int temFazenda(Fazenda *fazenda){
-	//Fazenda *aux = fazenda;
-	printf(".......\n");
-	if(!fazenda){
-		printf("\nSem fazendas registradas!\n");
-		return 0;
-	}
-
-	printf(".......\n");
-
-	return 1;
-}
-*/
