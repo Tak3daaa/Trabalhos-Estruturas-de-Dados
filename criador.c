@@ -118,8 +118,9 @@ void mostrarCriadores(Criador *criadores){
 
 void mostrarTudo(Criador *criador){
 	Criador *aux = criador;
-
-
+	printf(".......\n");
+	mostrarAnimalStatus(aux->fazendas->rebanho);
+	printf(".......\n");
 
 
 }

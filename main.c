@@ -16,7 +16,7 @@ int main() {
     // c = cadastrarCriador(c);
 
     mostrarCriadores(c);
-
+    mostrarTudo(c);
     ///printf("%d\n",temFazenda(c->fazendas));
     
 

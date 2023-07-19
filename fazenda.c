@@ -39,9 +39,9 @@ Fazenda *cadastrarFazenda(Fazenda *fazendas){
 	scanf("%s", novo->localizacao.estado);
 	printf("Insira o logradouro: "); 
 	scanf("%s", novo->localizacao.logradouro);
-	//novo->rebanho = criaListaEncadeadaSimplesAnimais();
+	novo->rebanho = criaListaEncadeadaSimplesAnimais();
 	//fazendas->rebanho = criaListaEncadeadaSimplesAnimais();
-	//novo->rebanho = cadastrar(novo->rebanho);
+	novo->rebanho = cadastrarAnimal(novo->rebanho);
 
 	if(fazendas == NULL){
 		novo->prox = novo;
