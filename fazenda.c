@@ -11,6 +11,8 @@ struct endereco{
 	char cidade[50], estado[2], logradouro[200];
 };
 
+int i = 0;
+
 struct fazenda{
 	int id_criador, id_fazenda;
 	char nome[100];
@@ -29,16 +31,26 @@ Fazenda *cadastrarFazenda(Fazenda *fazendas){
 	Fazenda *novo = (Fazenda *) malloc(sizeof(Fazenda));
 	Fazenda *aux = fazendas;
 
+	novo->id_criador = ++i;
+	
 	printf("Informe o id da fazenda: ");
+	fflush(stdin);
 	scanf("%d", &novo->id_fazenda);
 	printf("Insira o nome da fazenda: "); 
-	scanf("%s", novo->nome);
+	scanf("%s[^\n]", novo->nome);
+	fflush(stdin);
 	printf("Insira a cidade: "); 
-	scanf("%s", novo->localizacao.cidade);
+	scanf("%s[^\n]", novo->localizacao.cidade);
+	fflush(stdin);
 	printf("Insira o estado: "); 
-	scanf("%s", novo->localizacao.estado);
+	scanf("%s[^\n]", novo->localizacao.estado);
+	fflush(stdin);
 	printf("Insira o logradouro: "); 
-	scanf("%s", novo->localizacao.logradouro);
+	scanf("%s[^\n]", novo->localizacao.logradouro);
+	fflush(stdin);
+	novo->rebanho = criaListaEncadeadaSimplesAnimais();
+
+	if(novo->rebanho) printf("Rebanho criado\n");
 
 	if(fazendas == NULL){
 		novo->prox = novo;
@@ -154,6 +166,13 @@ Fazenda *getBuscar(Fazenda *fazendas, int id){
 	return aux->prox == fazendas ? NULL : aux->prox;
 }
 
+/*
+void mostrarFazendas(Fazenda *fazendas){
+	Fazenda *aux = fazendas;
+
+
+}
+*/
 // int quantAnimaisSexo(Fazenda *fazenda, char sexo){
 
 // }

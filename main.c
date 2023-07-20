@@ -10,7 +10,7 @@ int menu(){
     printf("1 - Cadastrar Criador\t2 - Cadastrar Fazenda\n");
     printf("3 - Cadastrar Animal\t4 - Mostrar Criador\n");
     printf("5 - Remover Criador\t6 - Remover Fazenda\n");
-    printf("7 - Remover Animal\t\n");
+    printf("7 - Remover Animal\t8 - Tem Fazenda\n");
     printf("\nEscolha uma opcao: ");
     int op;
     scanf("%d", &op);
@@ -20,38 +20,69 @@ int menu(){
 
 int main() {
 
-    Criador *c, *cad_fazenda;
-    c = criarListaDuplaCriadores();
+    Criador *listaCriadores = criarListaDuplaCriadores();
+
+    Criador *c;
+    Fazenda *f;
+    // Animal *a;
+
     int r = 1;
 
     while(r != 0){
         r = menu();
         switch (r){
-            case 1:
-                c = cadastrarCriador(c);
-                break;
-            case 2:
-                cad_fazenda = buscarCriador(c);
-                //cad_fazenda->fazendas = criarListaEncadeadaCircularFazendas();
-                cad_fazenda->fazendas = cadastrarFazenda(cad_fazenda->fazendas);
-                break;
-            case 3:
-                cad_fazenda->fazendas = buscarFazenda(cad_fazenda->fazendas);
-                //cad_fazenda->fazendas->rebanho = criaListaEncadeadaSimplesAnimais();
-                cad_fazenda->fazendas->rebanho = cadastrarAnimal(cad_fazenda->fazendas->rebanho);
-                break;
-            case 4:
-                mostrarCriadores(c);
-                break;
-            case 5:
-                c = removerCriador(c);
-                break;
-            //case 6:
-                
-            default:
-                break;
+        case 1:
+            listaCriadores = cadastrarCriador(listaCriadores);
+            break;
+        case 2:
+            c = buscarCriador(listaCriadores);
+            c->fazendas = cadastrarFazenda(c->fazendas);
+            break;
+        case 3:
+            c = buscarCriador(listaCriadores);
+            f = buscarFazenda(c->fazendas);
+            f->rebanho = cadastrarAnimal(f->rebanho);
+            break;
+        case 4:
+            mostrarCriadores(listaCriadores);
+            break;
+        case 5:
+            listaCriadores = removerCriador(listaCriadores);
+            break;
+        case 8:
+            c = buscarCriador(listaCriadores);
+            printf("Tem fazenda %d\n", temFazenda(c->fazendas));
+            break;
+        default:
+            break;
         }
     }
 
+    /*listaCriadores = cadastrarCriador(listaCriadores);
+
+    c = buscarCriador(listaCriadores);
+
+    printf("Id criador: %5d\n", c->id_criador);
+
+    c->fazendas = cadastrarFazenda(c->fazendas);
+
+    printf("Id fazenda criador: %5d \tId fazenda fazenda: %5d\n", c->fazendas->id_criador, c->fazendas->id_fazenda);
+
+    c = buscarCriador(listaCriadores);
+
+    f = buscarFazenda(c->fazendas);
+
+    printf("Teste fazenda criador: %5d \tTeste fazenda fazebda: %5d\n", f->id_criador, f->id_fazenda);
+
+    c = buscarCriador(listaCriadores);
+
+    f = buscarFazenda(c->fazendas);
+
+    a = buscarAnimal(f->rebanho);
+
+    printf("Id animal %5d\tId fazenda %5d\n", a->id_animal, a->id_fazenda);*/
+
     return 0;
 }
+
+// \Trabalhos-Estruturas-de-Dados>teste.exe

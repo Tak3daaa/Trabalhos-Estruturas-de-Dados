@@ -14,7 +14,6 @@ struct animal {
 };
 
 Animal *criaListaEncadeadaSimplesAnimais() {
-	printf("Animal Criar.");
 	return NULL;
 }
 

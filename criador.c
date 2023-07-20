@@ -26,6 +26,7 @@ Criador *cadastrarCriador(Criador *criadores){
 	Criador *c;
 
 	c = (Criador*)malloc(sizeof(Criador));
+	c->fazendas = criarListaEncadeadaCircularFazendas();
 	printf("Id do criador: ");
 	scanf("%d", &c->id_criador);
 	fflush(stdin);
@@ -34,6 +35,7 @@ Criador *cadastrarCriador(Criador *criadores){
 	fflush(stdin);
 	c->ant = NULL;
 	c->prox = criadores;
+
 	if(!criadores){
 		c->prox = NULL;
 	} else{
@@ -106,22 +108,21 @@ void mostrarTudo(Criador *criador){
 Criador *removerCriador(Criador *criadores){
 	Criador *aux = buscarCriador(criadores);
 	Criador *aux2;
-
 	if(temFazenda(aux->fazendas) != 0){
 		printf("Nao eh possivel excluir esse criador.\n");
 	} else{
 		if(!aux->ant && !aux->prox){
-			free(aux);
+			printf("Criador Removido.\n");
+			return NULL;
 		} else if(!aux->prox){
-			aux2 = aux->ant;
-			aux2->prox = NULL;
-		} else{
-			aux2 = aux->ant;
-			aux2->prox = aux->prox;
-			aux->ant = aux2;
+			aux2 = aux;
+			aux->ant->prox = NULL;
+			free(aux2);
+		} else if(!aux->ant){
+			aux2 = aux;
+			aux = aux->prox;
+			free(aux2);
 		}
-
-		free(aux);
 		printf("Criador Removido.\n");
 
 	}
@@ -129,3 +130,15 @@ Criador *removerCriador(Criador *criadores){
 	return criadores;
 	
 }
+
+/*
+if(!aux->ant){
+			aux->prox->ant = NULL;
+			aux->prox = NULL;
+		} else if(!aux->prox){
+			aux->ant->prox = NULL;
+		} else{
+			aux->ant->prox = aux->prox;
+			aux->prox->ant = aux->ant;
+		}
+*/
