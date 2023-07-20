@@ -17,7 +17,7 @@ struct fazenda{
 	int id_criador, id_fazenda;
 	char nome[100];
 	Endereco localizacao;
-	float valor_fazenda;//lembrar de atualizar o valor sempre que houver alterações no rebanho
+	float valor_fazenda; //lembrar de atualizar o valor sempre que houver alterações no rebanho
 	Animal *rebanho; // ponteiro para uma lista (verificar no .h do animal que lista é)
 	//ponteiro para permitir o apontamento para o proximo elemento da lista (deve ser circular)
 	struct fazenda *prox;
@@ -36,21 +36,23 @@ Fazenda *cadastrarFazenda(Fazenda *fazendas){
 	printf("Informe o id da fazenda: ");
 	fflush(stdin);
 	scanf("%d", &novo->id_fazenda);
+	fflush(stdin);
 	printf("Insira o nome da fazenda: "); 
-	scanf("%s[^\n]", novo->nome);
+	scanf("%[^\n]", novo->nome);
 	fflush(stdin);
 	printf("Insira a cidade: "); 
-	scanf("%s[^\n]", novo->localizacao.cidade);
+	scanf("%[^\n]", novo->localizacao.cidade);
 	fflush(stdin);
-	printf("Insira o estado: "); 
-	scanf("%s[^\n]", novo->localizacao.estado);
+	char c1, c2;
+	printf("Insira o estado (obs: coloque as sigla do estado): "); 
+	scanf("%c%c", &c1, &c2);
+	novo->localizacao.estado[0] = c1;
+	novo->localizacao.estado[1] = c2;
 	fflush(stdin);
-	printf("Insira o logradouro: "); 
-	scanf("%s[^\n]", novo->localizacao.logradouro);
+	printf("Insira o logradouro: ");
+	scanf("%[^\n]", novo->localizacao.logradouro);
 	fflush(stdin);
 	novo->rebanho = criaListaEncadeadaSimplesAnimais();
-
-	if(novo->rebanho) printf("Rebanho criado\n");
 
 	if(fazendas == NULL){
 		novo->prox = novo;

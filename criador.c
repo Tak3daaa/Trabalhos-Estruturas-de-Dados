@@ -31,7 +31,7 @@ Criador *cadastrarCriador(Criador *criadores){
 	scanf("%d", &c->id_criador);
 	fflush(stdin);
 	printf("Nome do criador: ");
-	scanf("%s[^\n]", c->nome);
+	scanf("%[^\n]", c->nome);
 	fflush(stdin);
 	c->ant = NULL;
 	c->prox = criadores;
@@ -44,6 +44,14 @@ Criador *cadastrarCriador(Criador *criadores){
 	}
 
 	return c;
+}
+
+void mostrarFazenda(Fazenda *fazenda){
+	printf("Nome da Fazenda: %s\n", fazenda->nome);
+	//printf("Valor da fazenda: %.2f\n", fazenda->valor_fazenda);
+	printf("Cidade: %s\n", fazenda->localizacao.cidade);
+	printf("Estado: %c%c\n", fazenda->localizacao.estado[0], fazenda->localizacao.estado[1]);
+	printf("Logradouro: %s\n", fazenda->localizacao.logradouro);
 }
 
 int size(Criador *c){
@@ -89,10 +97,12 @@ int temFazenda(Fazenda *fazenda){
 void mostrarCriadores(Criador *criadores){
 	Criador *aux = criadores;
 
-	printf("\n--------Criador--------\n");
-	
+	//printf("\n--------Criador--------\n");
+
 	while(aux){
-		printf("%5d\t%5s\n", aux->id_criador, aux->nome);
+		printf("-----------------------------------------\n");
+		printf("Id do criador: %d\nNome: %s\n", aux->id_criador, aux->nome);
+		mostrarFazenda(aux->fazendas);
 		aux = aux->prox;
 	}
 	printf("\n");
@@ -130,6 +140,13 @@ Criador *removerCriador(Criador *criadores){
 	return criadores;
 	
 }
+
+
+/*float calcularPatrimonio(Criador *criador){
+	float patrimonio = 0.0;
+
+
+}*/
 
 /*
 if(!aux->ant){

@@ -26,7 +26,7 @@ int main() {
     Fazenda *f;
     // Animal *a;
 
-    int r = 1;
+    /*int r = 1;
 
     while(r != 0){
         r = menu();
@@ -56,31 +56,38 @@ int main() {
         default:
             break;
         }
-    }
+    }*/
 
-    /*listaCriadores = cadastrarCriador(listaCriadores);
+    listaCriadores = cadastrarCriador(listaCriadores);
 
     c = buscarCriador(listaCriadores);
-
-    printf("Id criador: %5d\n", c->id_criador);
 
     c->fazendas = cadastrarFazenda(c->fazendas);
 
-    printf("Id fazenda criador: %5d \tId fazenda fazenda: %5d\n", c->fazendas->id_criador, c->fazendas->id_fazenda);
+    listaCriadores = cadastrarCriador(listaCriadores);
 
     c = buscarCriador(listaCriadores);
 
-    f = buscarFazenda(c->fazendas);
+    c->fazendas = cadastrarFazenda(c->fazendas);
 
-    printf("Teste fazenda criador: %5d \tTeste fazenda fazebda: %5d\n", f->id_criador, f->id_fazenda);
+    mostrarCriadores(c);
 
-    c = buscarCriador(listaCriadores);
+    //printf("Id fazenda criador: %5d \tId fazenda fazenda: %5d\n", c->fazendas->id_criador, c->fazendas->id_fazenda);
 
-    f = buscarFazenda(c->fazendas);
+    //c = buscarCriador(listaCriadores);
 
-    a = buscarAnimal(f->rebanho);
+    //f = buscarFazenda(c->fazendas);
 
-    printf("Id animal %5d\tId fazenda %5d\n", a->id_animal, a->id_fazenda);*/
+    //printf("Teste fazenda criador: %5d \tTeste fazenda fazebda: %5d\n", f->id_criador, f->id_fazenda);
+
+    //c = buscarCriador(listaCriadores);
+
+    //f = buscarFazenda(c->fazendas);
+    //mostrarFazenda(f);
+
+    //a = buscarAnimal(f->rebanho);
+
+    //printf("Id animal %5d\tId fazenda %5d\n", a->id_animal, a->id_fazenda);
 
     return 0;
 }
