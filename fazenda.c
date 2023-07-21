@@ -178,3 +178,34 @@ void mostrarFazendas(Fazenda *fazendas){
 // int quantAnimaisSexo(Fazenda *fazenda, char sexo){
 
 // }
+
+// kinho.cpp
+// josecarloscruz
+// segment tree 
+// seg lazy
+// bit 2d
+// bit
+
+/*
+
+void update(int p, int x)
+{
+    for (; p < MAXN; p += (p & -p))
+        bit[p] += x;
+}
+
+int query(int p)
+{
+    int r = 0;
+    for (; p; p -= (p & -p))
+        r += bit[p];
+    return r;
+}
+
+https://cses.fi/problemset/task/1648/
+https://pastebin.com/rcEY2MLu
+
+// bit
+https://pastebin.com/LgLFM1DY
+
+*/
