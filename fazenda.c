@@ -4,8 +4,6 @@
 #include "fazenda.h"
 #include "animal.h"
 #include "criador.h"
-// #include "animal.c"
-//#include "criador.h"
 
 struct endereco{
 	char cidade[50], estado[2], logradouro[200];

@@ -24,7 +24,7 @@ int main() {
 
     Criador *c;
     Fazenda *f;
-    // Animal *a;
+    //Animal *a;
 
     /*int r = 1;
 
@@ -64,13 +64,33 @@ int main() {
 
     c->fazendas = cadastrarFazenda(c->fazendas);
 
-    listaCriadores = cadastrarCriador(listaCriadores);
-
     c = buscarCriador(listaCriadores);
 
-    c->fazendas = cadastrarFazenda(c->fazendas);
+    f = buscarFazenda(c->fazendas);
 
-    mostrarCriadores(c);
+    f->rebanho = cadastrarAnimal(f->rebanho);
+    f->rebanho = cadastrarAnimal(f->rebanho);
+    f->rebanho->id_fazenda = f->id_fazenda;
+
+    //mostrarAnimal(f->rebanho);
+    mostrarTodosAnimais(f);
+    contAnimaisSexo(f);
+    //a = buscarAnimal(f->rebanho);
+
+    //mostrarAnimal(a);
+
+    calcularPatrimonio(c);
+
+    mostrarCriadores(listaCriadores);
+
+
+    // listaCriadores = cadastrarCriador(listaCriadores);
+
+    // c = buscarCriador(listaCriadores);
+
+    // c->fazendas = cadastrarFazenda(c->fazendas);
+
+    //mostrarCriadores(c);
 
     //printf("Id fazenda criador: %5d \tId fazenda fazenda: %5d\n", c->fazendas->id_criador, c->fazendas->id_fazenda);
 

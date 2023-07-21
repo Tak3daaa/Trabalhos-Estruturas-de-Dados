@@ -1,6 +1,5 @@
 typedef struct fazenda Fazenda;
 typedef struct endereco Endereco;
-//#include "criador.h"
 
 //Criador *criarListaEncadeadaCircularFazendas();
 Fazenda *criarListaEncadeadaCircularFazendas();
@@ -8,7 +7,7 @@ Fazenda *cadastrarFazenda(Fazenda *fazendas);
 Fazenda *removerFazenda(Fazenda *fazendas, int id);//nao permitir remover fazenda se houver animais cadastrados
 Fazenda *buscarFazenda(Fazenda *fazendas);
 Fazenda *getBuscar(Fazenda *fazendas, int id);
-
+int temFazenda(Fazenda *fazenda);
 /*
 Desenvolva funcoes que, dado uma FAZENDA, informar:
 - Quantidade de animais por sexo;

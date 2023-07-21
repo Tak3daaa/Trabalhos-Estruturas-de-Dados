@@ -4,6 +4,7 @@ Criador *criarListaDuplaCriadores();
 Criador *cadastrarCriador(Criador *criadores);
 Criador *removerCriador(Criador *criadores); // nao é permitido remover criador com fazendas cadastradas
 Criador *buscarCriador(Criador *criadores);
+void liberarMemoriaCriadores(Criador *criadores);
 
 
 /*

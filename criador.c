@@ -97,12 +97,14 @@ int temFazenda(Fazenda *fazenda){
 void mostrarCriadores(Criador *criadores){
 	Criador *aux = criadores;
 
-	//printf("\n--------Criador--------\n");
-
 	while(aux){
 		printf("-----------------------------------------\n");
 		printf("Id do criador: %d\nNome: %s\n", aux->id_criador, aux->nome);
+		printf("Patrimonio: %.2f\n", aux->patrimonio);
+		printf("------------Fazendas-----------\n");
 		mostrarFazenda(aux->fazendas);
+		printf("------------Animais-----------\n");
+		mostrarTodosAnimais(aux->fazendas);
 		aux = aux->prox;
 	}
 	printf("\n");
@@ -111,7 +113,7 @@ void mostrarCriadores(Criador *criadores){
 void mostrarTudo(Criador *criador){
 	Criador *aux = criador;
 	mostrarCriadores(aux);
-	mostrarAnimalStatus(aux->fazendas->rebanho);
+	mostrarAnimal(aux->fazendas->rebanho);
 }
 
 // https://wiki.python.org.br/ExerciciosClasses
@@ -142,11 +144,14 @@ Criador *removerCriador(Criador *criadores){
 }
 
 
-/*float calcularPatrimonio(Criador *criador){
-	float patrimonio = 0.0;
+void calcularPatrimonio(Criador *criador){
+	float quantArroba;
 
+	quantArroba = contArroba(criador->fazendas);
 
-}*/
+	criador->patrimonio = quantArroba * 235.0;
+
+}
 
 /*
 if(!aux->ant){
