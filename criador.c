@@ -47,11 +47,16 @@ Criador *cadastrarCriador(Criador *criadores){
 }
 
 void mostrarFazenda(Fazenda *fazenda){
-	printf("Nome da Fazenda: %s\n", fazenda->nome);
-	//printf("Valor da fazenda: %.2f\n", fazenda->valor_fazenda);
-	printf("Cidade: %s\n", fazenda->localizacao.cidade);
-	printf("Estado: %c%c\n", fazenda->localizacao.estado[0], fazenda->localizacao.estado[1]);
-	printf("Logradouro: %s\n", fazenda->localizacao.logradouro);
+	if(fazenda){
+		printf("Nome da Fazenda: %s\n", fazenda->nome);
+		//printf("Valor da fazenda: %.2f\n", fazenda->valor_fazenda);
+		printf("Cidade: %s\n", fazenda->localizacao.cidade);
+		printf("Estado: %c%c\n", fazenda->localizacao.estado[0], fazenda->localizacao.estado[1]);
+		printf("Logradouro: %s\n", fazenda->localizacao.logradouro);
+	} else{
+		printf("Nao tem nehuma fazenda cadastrada.\n");
+	}
+	
 }
 
 int size(Criador *c){
@@ -101,9 +106,9 @@ void mostrarCriadores(Criador *criadores){
 		printf("-----------------------------------------\n");
 		printf("Id do criador: %d\nNome: %s\n", aux->id_criador, aux->nome);
 		printf("Patrimonio: %.2f\n", aux->patrimonio);
-		printf("------------Fazendas-----------\n");
+		//printf("------------Fazendas-----------\n");
 		mostrarFazenda(aux->fazendas);
-		printf("------------Animais-----------\n");
+		//printf("------------Animais-----------\n");
 		mostrarTodosAnimais(aux->fazendas);
 		aux = aux->prox;
 	}
@@ -123,18 +128,26 @@ Criador *removerCriador(Criador *criadores){
 	if(temFazenda(aux->fazendas) != 0){
 		printf("Nao eh possivel excluir esse criador.\n");
 	} else{
-		if(!aux->ant && !aux->prox){
+		if(!aux){
 			printf("Criador Removido.\n");
+			free(aux);
 			return NULL;
-		} else if(!aux->prox){
-			aux2 = aux;
-			aux->ant->prox = NULL;
-			free(aux2);
-		} else if(!aux->ant){
-			aux2 = aux;
-			aux = aux->prox;
-			free(aux2);
+		} else{
+			if(!aux->ant && !aux->prox){
+				free(aux);
+				return NULL;
+			} else if(!aux->ant){
+				aux2 = aux;
+				aux = aux->prox;
+				aux->ant = NULL;
+				free(aux2);
+			} else if(!aux->prox){
+				aux2 = aux->ant;
+				aux2->prox = NULL;
+				free(aux);
+			}
 		}
+
 		printf("Criador Removido.\n");
 
 	}
@@ -154,13 +167,16 @@ void calcularPatrimonio(Criador *criador){
 }
 
 /*
-if(!aux->ant){
-			aux->prox->ant = NULL;
-			aux->prox = NULL;
-		} else if(!aux->prox){
-			aux->ant->prox = NULL;
-		} else{
-			aux->ant->prox = aux->prox;
-			aux->prox->ant = aux->ant;
-		}
+if (remover_animal == NULL)
+	{
+		return fazenda->rebanho;
+	}
+	if (anterior == NULL)
+	{
+		fazenda->rebanho = remover_animal->prox;
+	}else
+	{
+		anterior->prox = remover_animal->prox;
+	}
+	free(remover_animal);
 */

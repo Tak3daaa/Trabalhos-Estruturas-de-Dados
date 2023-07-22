@@ -166,23 +166,6 @@ Fazenda *getBuscar(Fazenda *fazendas, int id){
 	return aux->prox == fazendas ? NULL : aux->prox;
 }
 
-/*
-void mostrarFazendas(Fazenda *fazendas){
-	Fazenda *aux = fazendas;
-
-
-}
-*/
-// int quantAnimaisSexo(Fazenda *fazenda, char sexo){
-
-// }
-
-// kinho.cpp
-// josecarloscruz
-// segment tree 
-// seg lazy
-// bit 2d
-// bit
 
 /*
 

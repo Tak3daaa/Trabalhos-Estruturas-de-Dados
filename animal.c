@@ -149,26 +149,36 @@ float contArroba(Fazenda *fazenda){
 }
 
 void mostrarAnimal(Animal *rebanho) {
-    printf("---------------------------------------\n");
-    printf("Id da fazenda: %d\n", rebanho->id_fazenda);
-    printf("Id do animal: %d\n", rebanho->id_animal);
-    printf("Sexo: %c\n", rebanho->sexo);
-    printf("Peso: %.2f\n", rebanho->peso);
+	if(rebanho){
+		printf("---------------------------------------\n");
+		printf("Id da fazenda: %d\n", rebanho->id_fazenda);
+		printf("Id do animal: %d\n", rebanho->id_animal);
+		printf("Sexo: %c\n", rebanho->sexo);
+		printf("Peso: %.2f\n", rebanho->peso);
 
-    if (rebanho->status == 1) {
-        printf("Status: Nascimento na própria fazenda.\n");
-    } else if (rebanho->status == 2) {
-        printf("Status: Vendido.\n");
-    } else if (rebanho->status == 3) {
-        printf("Status: Troca.\n");
-    }
+		if (rebanho->status == 1) {
+			printf("Status: Nascimento na própria fazenda.\n");
+		} else if (rebanho->status == 2) {
+			printf("Status: Vendido.\n");
+		} else if (rebanho->status == 3) {
+			printf("Status: Troca.\n");
+		}
+	} else{
+		printf("Nenhum animal cadastrado.\n");
+	}
+    
 }
 
 void mostrarTodosAnimais(Fazenda *fazenda) {
     Animal *aux;
-    for (aux = fazenda->rebanho; aux != NULL; aux = aux->prox) {
-        mostrarAnimal(aux);
-    }
+	if(fazenda){
+		for (aux = fazenda->rebanho; aux != NULL; aux = aux->prox) {
+			mostrarAnimal(aux);
+		}
+	} else{
+		printf("Nenhum animal na fazenda.\n");
+	}
+    
 }
 
 

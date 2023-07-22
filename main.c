@@ -26,7 +26,7 @@ int main() {
     Fazenda *f;
     //Animal *a;
 
-    /*int r = 1;
+    int r = 1;
 
     while(r != 0){
         r = menu();
@@ -56,32 +56,22 @@ int main() {
         default:
             break;
         }
-    }*/
+    }
 
+    /*listaCriadores = cadastrarCriador(listaCriadores);
+    listaCriadores = cadastrarCriador(listaCriadores);
     listaCriadores = cadastrarCriador(listaCriadores);
 
     c = buscarCriador(listaCriadores);
 
     c->fazendas = cadastrarFazenda(c->fazendas);
 
-    c = buscarCriador(listaCriadores);
-
-    f = buscarFazenda(c->fazendas);
-
-    f->rebanho = cadastrarAnimal(f->rebanho);
-    f->rebanho = cadastrarAnimal(f->rebanho);
-    f->rebanho->id_fazenda = f->id_fazenda;
-
-    //mostrarAnimal(f->rebanho);
-    mostrarTodosAnimais(f);
-    contAnimaisSexo(f);
-    //a = buscarAnimal(f->rebanho);
-
-    //mostrarAnimal(a);
-
-    calcularPatrimonio(c);
-
     mostrarCriadores(listaCriadores);
+
+    listaCriadores = removerCriador(listaCriadores);
+
+    mostrarCriadores(listaCriadores);*/
+
 
 
     // listaCriadores = cadastrarCriador(listaCriadores);
